@@ -115,11 +115,12 @@ public class CalendarView extends DateControl {
          */
         getStylesheets().add(CalendarView.class.getResource("calendar.css").toExternalForm()); //$NON-NLS-1$
 
+        /*17.12.03 Fix Compile Error*/
         /*
          * We are "abusing" the properties map to pass new values of read-only
          * properties from the skin to the control.
          */
-        getProperties().addListener((Change<?, ?> change) -> {
+        getProperties().addListener((Change<? extends Object, ? extends Object> change) -> {
             if (change.getKey().equals(SELECTED_PAGE)) {
                 if (change.getValueAdded() != null) {
                     PageBase page = (PageBase) change.getValueAdded();
